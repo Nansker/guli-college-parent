@@ -1,0 +1,9 @@
+qiniu:
+  url: https://qiniu.nansk.cn
+  accessKey: PscjNeHxLFWke9CQUuA1U6qiliKybFQbdMCmZI1w
+  secretKey: _KF6D-MbOqEb59Ic-VAmbgSGgsBpk5iCtxvSi9sd
+  bucketName: nansker-guli-college
+#  日志级别
+logging:
+  root:
+    level: info

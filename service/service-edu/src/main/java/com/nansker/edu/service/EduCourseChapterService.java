@@ -2,6 +2,9 @@ package com.nansker.edu.service;
 
 import com.nansker.edu.domain.EduCourseChapter;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.nansker.edu.domain.vo.CourseChapterVo;
+
+import java.util.List;
 
 /**
 * @author Nansker
@@ -9,5 +12,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
 * @createDate 2023-09-06 21:52:24
 */
 public interface EduCourseChapterService extends IService<EduCourseChapter> {
-
+	List<CourseChapterVo> getChapterInfoByCourseId(String courseId);
 }

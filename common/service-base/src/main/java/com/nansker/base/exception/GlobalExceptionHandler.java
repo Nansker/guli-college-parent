@@ -1,4 +1,4 @@
-package com.nansker.servicebase.exception;
+package com.nansker.base.exception;
 
 import com.nansker.commonutils.result.ResultData;
 import org.springframework.web.bind.annotation.ControllerAdvice;

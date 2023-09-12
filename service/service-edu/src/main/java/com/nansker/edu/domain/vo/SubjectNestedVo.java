@@ -2,6 +2,7 @@ package com.nansker.edu.domain.vo;
 
 import lombok.Data;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -12,7 +13,7 @@ import java.util.List;
  * @description TODO
  */
 @Data
-public class SubjectNestedVo {
+public class SubjectNestedVo implements Serializable {
     private String id;
     private String title;
     private Date gmtCreate;

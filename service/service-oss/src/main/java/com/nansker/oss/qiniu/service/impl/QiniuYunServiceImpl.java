@@ -11,6 +11,7 @@ import com.qiniu.storage.Configuration;
 import com.qiniu.storage.UploadManager;
 import com.qiniu.util.Auth;
 import com.qiniu.util.StringMap;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -24,6 +25,7 @@ import java.util.UUID;
  * @date 2023/8/21 20:29
  * @description TODO
  */
+@Slf4j
 @Service
 public class QiniuYunServiceImpl implements QiniuYunService {
     private QiniuYunConfig qiniuYunConfig;
@@ -36,8 +38,8 @@ public class QiniuYunServiceImpl implements QiniuYunService {
         init();
     }
     private void init() {
-        // 我是华南地区的所以是zone2，如果是其他地区的需要修改
-        uploadManager = new UploadManager(new Configuration(Region.huanan()));
+        // 华南地区zone2，如果是其他地区的需要修改
+        uploadManager = new UploadManager(new Configuration(Region.region2()));
         auth = Auth.create(qiniuYunConfig.getAccessKey(), qiniuYunConfig.getSecretKey());
         // 根据命名空间生成的上传token
         bucketManager = new BucketManager(auth, new Configuration(Region.huanan()));
@@ -45,7 +47,7 @@ public class QiniuYunServiceImpl implements QiniuYunService {
     }
 
     @Override
-    public ResultData uploadQNImage(MultipartFile file) {
+    public MyPutRet uploadQNImage(MultipartFile file) {
         try {
             //1、获取文件上传的流
             byte[] fileBytes = file.getBytes();
@@ -58,11 +60,14 @@ public class QiniuYunServiceImpl implements QiniuYunService {
             String filename = datePath+"/"+ UUID.randomUUID().toString().replace("-", "")+ suffix;
             //4.上传文件
             Response response = uploadManager.put(fileBytes, filename, token);
-            return ResultData.ok().data(response.jsonToObject(MyPutRet.class));
+            MyPutRet myPutRet = response.jsonToObject(MyPutRet.class);
+            myPutRet.setKey(qiniuYunConfig.getUrl()+"/"+myPutRet.getKey());
+            log.info(myPutRet.getKey());
+            return myPutRet;
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return ResultData.ok();
+        return null;
     }
 
 }

@@ -2,7 +2,7 @@ package com.nansker.edu.controller;
 
 import com.nansker.commonutils.result.ResultData;
 import com.nansker.edu.domain.EduTeacher;
-import com.nansker.edu.domain.dto.EduTeacherDto;
+import com.nansker.edu.domain.dto.TeacherDto;
 import com.nansker.edu.service.EduTeacherService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,21 +18,26 @@ import org.springframework.web.bind.annotation.*;
 @Slf4j
 public class EduTeacherController {
     @Autowired
-    EduTeacherService eduTeacherService;
+    EduTeacherService teacherService;
 
     @GetMapping("/list")
-    public ResultData listTeacher(EduTeacherDto teacherDto) {
-        return ResultData.ok().data(eduTeacherService.getTeacherList(teacherDto));
+    public ResultData listTeacher(TeacherDto teacherDto) {
+        return ResultData.ok().data(teacherService.getTeacherList(teacherDto));
+    }
+
+    @GetMapping("/all")
+    public ResultData allTeacher(){
+        return ResultData.ok().data(teacherService.list());
     }
 
     @GetMapping("/{id}")
     public ResultData getTeacherById(@PathVariable String id) {
-        return ResultData.ok().data(eduTeacherService.getById(id));
+        return ResultData.ok().data(teacherService.getById(id));
     }
 
     @PostMapping
     public ResultData addTeacher(@RequestBody EduTeacher teacher){
-        boolean result = eduTeacherService.save(teacher);
+        boolean result = teacherService.save(teacher);
         if (!result){
             return ResultData.error();
         }
@@ -41,7 +46,7 @@ public class EduTeacherController {
 
     @PutMapping
     public ResultData updateTeacher(@RequestBody EduTeacher teacher){
-        boolean result = eduTeacherService.updateById(teacher);
+        boolean result = teacherService.updateById(teacher);
         if (!result){
             return ResultData.error();
         }
@@ -50,7 +55,7 @@ public class EduTeacherController {
 
     @DeleteMapping("/{id}")
     public ResultData deleteTeacher(@PathVariable String id){
-        boolean result = eduTeacherService.removeById(id);
+        boolean result = teacherService.removeById(id);
         if (!result){
             return ResultData.error();
         }

@@ -1,6 +1,6 @@
 package com.nansker.oss.qiniu.service;
 
-import com.nansker.commonutils.result.ResultData;
+import com.nansker.oss.qiniu.domain.MyPutRet;
 import org.springframework.web.multipart.MultipartFile;
 
 /**
@@ -9,5 +9,5 @@ import org.springframework.web.multipart.MultipartFile;
  * @description TODO
  */
 public interface QiniuYunService {
-    ResultData uploadQNImage(MultipartFile file);
+    MyPutRet uploadQNImage(MultipartFile file);
 }

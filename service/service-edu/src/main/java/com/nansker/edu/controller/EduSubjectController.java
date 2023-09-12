@@ -18,21 +18,21 @@ import java.util.List;
 @RequestMapping("/edu/subject")
 public class EduSubjectController {
     @Autowired
-    EduSubjectService eduSubjectService;
+    EduSubjectService subjectService;
 
     @GetMapping("/list")
     public ResultData listSubject() {
-        List<SubjectNestedVo> nestedVos = eduSubjectService.nestedList();
+        List<SubjectNestedVo> nestedVos = subjectService.nestedList();
         return ResultData.ok().data(nestedVos);
     }
     @GetMapping("/{id}")
     public ResultData getSubjectById(@PathVariable String id) {
-        return ResultData.ok().data(eduSubjectService.getById(id));
+        return ResultData.ok().data(subjectService.getById(id));
     }
 
     @PostMapping
     public ResultData addSubject(@RequestBody EduSubject subject){
-        boolean result = eduSubjectService.save(subject);
+        boolean result = subjectService.save(subject);
         if (!result){
             return ResultData.error();
         }
@@ -41,7 +41,7 @@ public class EduSubjectController {
 
     @PutMapping
     public ResultData updateTeacher(@RequestBody EduSubject subject){
-        boolean result = eduSubjectService.updateById(subject);
+        boolean result = subjectService.updateById(subject);
         if (!result){
             return ResultData.error();
         }
@@ -50,7 +50,7 @@ public class EduSubjectController {
 
     @DeleteMapping("/{id}")
     public ResultData deleteTeacher(@PathVariable String id){
-        boolean result = eduSubjectService.removeById(id);
+        boolean result = subjectService.removeById(id);
         if (!result){
             return ResultData.error();
         }

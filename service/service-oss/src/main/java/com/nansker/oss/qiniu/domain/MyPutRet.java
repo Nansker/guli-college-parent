@@ -1,10 +1,13 @@
 package com.nansker.oss.qiniu.domain;
 
+import lombok.Data;
+
 /**
  * @author Nansker
  * @date 2023/8/23 15:25
  * @description TODO
  */
+@Data
 public class MyPutRet {
     public String key; // 文件保存的 key
     public String hash; // 文件保存的 Etag

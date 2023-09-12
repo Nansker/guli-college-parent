@@ -9,7 +9,7 @@ import lombok.Data;
  * @description TODO
  */
 @Data
-public class EduSubjectDto extends EduSubject {
+public class SubjectDto extends EduSubject {
     private int pageNum;
     private int pageSize;
 }

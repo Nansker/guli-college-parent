@@ -1,9 +1,7 @@
 package com.nansker.edu.domain.dto;
 
 import com.nansker.edu.domain.EduTeacher;
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 /**
  * @author Nansker
@@ -11,9 +9,7 @@ import lombok.NoArgsConstructor;
  * @description TODO
  */
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
-public class EduTeacherDto extends EduTeacher {
+public class TeacherDto extends EduTeacher {
     private int pageNum;
     private int pageSize;
 }

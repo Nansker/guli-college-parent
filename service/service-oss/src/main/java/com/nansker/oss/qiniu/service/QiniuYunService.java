@@ -9,5 +9,13 @@ import org.springframework.web.multipart.MultipartFile;
  * @description TODO
  */
 public interface QiniuYunService {
-    MyPutRet uploadQNImage(MultipartFile file);
+    /**
+     * @author Nansker
+     * @date 2023/9/13 23:24
+     * @param type 文件分类
+     * @param file 文件
+     * @return com.nansker.oss.qiniu.domain.MyPutRet
+     * @description TODO
+    */
+    MyPutRet uploadFile(String type,MultipartFile file);
 }

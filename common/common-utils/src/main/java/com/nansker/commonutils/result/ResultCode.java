@@ -11,11 +11,11 @@ public interface ResultCode {
      * @date 2023/8/8 4:57
      * @description 操作成功
     */
-    public static Integer SUCCESS = 200;
+    Integer SUCCESS = 200;
     /**
      * @author Nansker
      * @date 2023/8/8 4:57
      * @description 操作失败
      */
-    public static Integer ERROR = 201;
+    Integer ERROR = 201;
 }

@@ -9,8 +9,28 @@ import lombok.Data;
  */
 @Data
 public class MyPutRet {
-    public String key; // 文件保存的 key
-    public String hash; // 文件保存的 Etag
-    public String bucket; // 文件保存的 bucket
-    public long fsize; // 文件的大小，单位：B
+    /**
+     * @author Nansker
+     * @date 2023/9/14 0:43
+     * @description 文件保存的 key
+    */
+    public String key;
+    /**
+     * @author Nansker
+     * @date 2023/9/14 0:43
+     * @description // 文件保存的 Etag
+    */
+    public String hash;
+    /**
+     * @author Nansker
+     * @date 2023/9/14 0:44
+     * @description 文件保存的 bucket
+    */
+    public String bucket;
+    /**
+     * @author Nansker
+     * @date 2023/9/14 0:44
+     * @description 文件的大小，单位：B
+    */
+    public long fsize;
 }

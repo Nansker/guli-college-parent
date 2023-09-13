@@ -1,7 +1,10 @@
 package com.nansker.edu.controller;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.nansker.commonutils.result.PageResultData;
 import com.nansker.commonutils.result.ResultData;
 import com.nansker.edu.domain.EduCourse;
+import com.nansker.edu.domain.dto.CourseDto;
 import com.nansker.edu.domain.vo.CourseInfoVo;
 import com.nansker.edu.domain.vo.CoursePublishVo;
 import com.nansker.edu.service.EduCourseService;
@@ -21,8 +24,9 @@ public class EduCourseController{
     @Autowired
     EduCourseService courseService;
     @GetMapping("/list")
-    public ResultData listCourse(CourseInfoVo courseInfo) {
-        return ResultData.ok();
+    public ResultData listCourse(CourseDto courseDto) {
+        PageResultData courseList = courseService.getCourseList(courseDto);
+        return ResultData.ok().data(courseList);
     }
 
     @GetMapping("/{id}")

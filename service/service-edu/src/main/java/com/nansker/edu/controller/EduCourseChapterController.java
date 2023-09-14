@@ -2,8 +2,6 @@ package com.nansker.edu.controller;
 
 import com.nansker.commonutils.result.ResultData;
 import com.nansker.edu.domain.EduCourseChapter;
-import com.nansker.edu.domain.EduCourseVideo;
-import com.nansker.edu.domain.EduSubject;
 import com.nansker.edu.domain.vo.CourseChapterVo;
 import com.nansker.edu.service.EduCourseChapterService;
 import org.springframework.beans.factory.annotation.Autowired;

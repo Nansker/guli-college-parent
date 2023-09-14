@@ -2,13 +2,13 @@ package com.nansker.oss.qiniu.service.impl;
 
 import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import com.nansker.oss.config.QiniuYunConfig;
-import com.nansker.oss.qiniu.domain.MyPutRet;
+import com.nansker.oss.qiniu.domain.CustomPutRet;
 import com.nansker.oss.qiniu.service.QiniuYunService;
 import com.qiniu.common.Region;
 import com.qiniu.http.Response;
-import com.qiniu.storage.BucketManager;
 import com.qiniu.storage.Configuration;
 import com.qiniu.storage.UploadManager;
+import com.qiniu.storage.model.DefaultPutRet;
 import com.qiniu.util.Auth;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -31,8 +31,6 @@ public class QiniuYunServiceImpl implements QiniuYunService {
 	private UploadManager uploadManager;
 	private String token;
 	private Auth auth;
-	private BucketManager bucketManager;
-
 	public QiniuYunServiceImpl(QiniuYunConfig qiniuYunConfig) {
 		this.qiniuYunConfig = qiniuYunConfig;
 		init();
@@ -40,15 +38,16 @@ public class QiniuYunServiceImpl implements QiniuYunService {
 
 	private void init() {
 		// 华南地区zone2，如果是其他地区的需要修改
-		uploadManager = new UploadManager(new Configuration());
+		//fixme 经常性报错 token 失效，导致文件上传失败,暂未找到解决办法
+		Configuration configuration = new Configuration(Region.huanan());
+		uploadManager = new UploadManager(configuration);
 		auth = Auth.create(qiniuYunConfig.getAccessKey(), qiniuYunConfig.getSecretKey());
 		// 根据命名空间生成的上传token
-		bucketManager = new BucketManager(auth, new Configuration(Region.huanan()));
 		token = auth.uploadToken(qiniuYunConfig.getBucketName());
 	}
 
 	@Override
-	public MyPutRet uploadFile(String type, MultipartFile file) {
+	public CustomPutRet uploadFile(String type, MultipartFile file) {
 		String fileType = StringUtils.isNotEmpty(type) ? (type + "/") : "";
 		try {
 			//获取文件数据流
@@ -61,12 +60,10 @@ public class QiniuYunServiceImpl implements QiniuYunService {
 			String filename = fileType + datePath + "/" + UUID.randomUUID().toString().replace("-", "") + suffix;
 			//上传文件
 			Response response = uploadManager.put(fileBytes, filename, token);
-			MyPutRet myPutRet = response.jsonToObject(MyPutRet.class);
+			CustomPutRet customPutRet = response.jsonToObject(CustomPutRet.class);
 			//TODO 返回的地址为七牛云文件全地址，待优化
-			//fixme 返回 MyPutRet bucket=null, fsize=0 的问题
-			myPutRet.setKey(qiniuYunConfig.getUrl() + "/" + myPutRet.getKey());
-			log.info("uploadFile.myPutRet--" + myPutRet.toString());
-			return myPutRet;
+			customPutRet.setKey(qiniuYunConfig.getUrl() + "/" + customPutRet.getKey());
+			return customPutRet;
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

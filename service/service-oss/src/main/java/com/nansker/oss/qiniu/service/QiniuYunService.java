@@ -1,6 +1,6 @@
 package com.nansker.oss.qiniu.service;
 
-import com.nansker.oss.qiniu.domain.MyPutRet;
+import com.nansker.oss.qiniu.domain.CustomPutRet;
 import org.springframework.web.multipart.MultipartFile;
 
 /**
@@ -17,5 +17,5 @@ public interface QiniuYunService {
      * @return com.nansker.oss.qiniu.domain.MyPutRet
      * @description TODO
     */
-    MyPutRet uploadFile(String type,MultipartFile file);
+    CustomPutRet uploadFile(String type, MultipartFile file);
 }

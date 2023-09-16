@@ -14,6 +14,12 @@ public interface FileType {
 	String AVATAR = "avatar";
 	/**
 	 * @author Nansker
+	 * @date 2023/9/15 17:32
+	 * @description 轮播图
+	*/
+	String BANNER = "banner";
+	/**
+	 * @author Nansker
 	 * @date 2023/9/14 0:43
 	 * @description 课程视频
 	*/

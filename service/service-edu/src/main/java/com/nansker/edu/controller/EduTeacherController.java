@@ -38,27 +38,18 @@ public class EduTeacherController {
     @PostMapping
     public ResultData addTeacher(@RequestBody EduTeacher teacher){
         boolean result = teacherService.save(teacher);
-        if (!result){
-            return ResultData.error();
-        }
         return ResultData.ok();
     }
 
     @PutMapping
     public ResultData updateTeacher(@RequestBody EduTeacher teacher){
         boolean result = teacherService.updateById(teacher);
-        if (!result){
-            return ResultData.error();
-        }
         return ResultData.ok();
     }
 
     @DeleteMapping("/{id}")
     public ResultData deleteTeacher(@PathVariable String id){
         boolean result = teacherService.removeById(id);
-        if (!result){
-            return ResultData.error();
-        }
         return ResultData.ok();
     }
 }

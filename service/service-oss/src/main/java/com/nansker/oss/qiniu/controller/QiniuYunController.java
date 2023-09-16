@@ -27,6 +27,11 @@ public class QiniuYunController {
         CustomPutRet customPutRet = qiniuYunService.uploadFile(FileType.AVATAR,file);
         return ResultData.ok().data(customPutRet);
     }
+    @PostMapping("/upload/banner")
+    public ResultData uploadBanner(@RequestParam(value = "file") MultipartFile file) {
+        CustomPutRet customPutRet = qiniuYunService.uploadFile(FileType.BANNER,file);
+        return ResultData.ok().data(customPutRet);
+    }
 
     @PostMapping("/upload/course/video")
     public ResultData uploadCourseCover(@RequestParam(value = "file") MultipartFile file) {

@@ -8,7 +8,6 @@ import com.qiniu.common.Region;
 import com.qiniu.http.Response;
 import com.qiniu.storage.Configuration;
 import com.qiniu.storage.UploadManager;
-import com.qiniu.storage.model.DefaultPutRet;
 import com.qiniu.util.Auth;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -31,6 +30,7 @@ public class QiniuYunServiceImpl implements QiniuYunService {
 	private UploadManager uploadManager;
 	private String token;
 	private Auth auth;
+
 	public QiniuYunServiceImpl(QiniuYunConfig qiniuYunConfig) {
 		this.qiniuYunConfig = qiniuYunConfig;
 		init();
@@ -39,16 +39,17 @@ public class QiniuYunServiceImpl implements QiniuYunService {
 	private void init() {
 		// 华南地区zone2，如果是其他地区的需要修改
 		//fixme 经常性报错 token 失效，导致文件上传失败,暂未找到解决办法
-		Configuration configuration = new Configuration(Region.huanan());
+		Configuration configuration = new Configuration(Region.autoRegion());
 		uploadManager = new UploadManager(configuration);
 		auth = Auth.create(qiniuYunConfig.getAccessKey(), qiniuYunConfig.getSecretKey());
-		// 根据命名空间生成的上传token
-		token = auth.uploadToken(qiniuYunConfig.getBucketName());
 	}
 
 	@Override
 	public CustomPutRet uploadFile(String type, MultipartFile file) {
 		String fileType = StringUtils.isNotEmpty(type) ? (type + "/") : "";
+		// 根据命名空间生成的上传token
+		//TODO 每次上传请求token,防止{"error":"expired token"}报错
+		token = auth.uploadToken(qiniuYunConfig.getBucketName());
 		try {
 			//获取文件数据流
 			byte[] fileBytes = file.getBytes();

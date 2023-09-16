@@ -32,7 +32,10 @@ public class EduTeacher implements Serializable {
      * 讲师简介
      */
     private String intro;
-
+    /**
+     * 资历简介
+     */
+    private String career;
     /**
      * 头衔 1高级讲师 2首席讲师
      */

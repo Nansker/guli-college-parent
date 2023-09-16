@@ -1,4 +1,4 @@
-package com.nansker.commonutils.result;
+package com.nansker.utils.result;
 
 import lombok.Data;
 

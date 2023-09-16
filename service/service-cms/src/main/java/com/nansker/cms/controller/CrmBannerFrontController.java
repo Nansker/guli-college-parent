@@ -2,9 +2,8 @@ package com.nansker.cms.controller;
 
 import com.nansker.cms.domain.CrmBanner;
 import com.nansker.cms.service.CrmBannerService;
-import com.nansker.commonutils.result.ResultData;
+import com.nansker.utils.result.ResultData;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

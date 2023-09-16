@@ -1,9 +1,7 @@
 package com.nansker.edu.controller;
 
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.nansker.commonutils.result.PageResultData;
-import com.nansker.commonutils.result.ResultData;
-import com.nansker.edu.domain.EduCourse;
+import com.nansker.utils.result.PageResultData;
+import com.nansker.utils.result.ResultData;
 import com.nansker.edu.domain.dto.CourseDto;
 import com.nansker.edu.domain.vo.CourseInfoVo;
 import com.nansker.edu.domain.vo.CoursePublishVo;

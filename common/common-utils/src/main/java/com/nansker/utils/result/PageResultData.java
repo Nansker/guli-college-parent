@@ -1,4 +1,4 @@
-package com.nansker.commonutils.result;
+package com.nansker.utils.result;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import lombok.AllArgsConstructor;

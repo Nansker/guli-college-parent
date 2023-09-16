@@ -1,6 +1,6 @@
 package com.nansker.oss.qiniu.controller;
 
-import com.nansker.commonutils.result.ResultData;
+import com.nansker.utils.result.ResultData;
 import com.nansker.oss.config.QiniuYunConfig;
 import com.nansker.oss.qiniu.domain.CustomPutRet;
 import com.nansker.oss.qiniu.domain.FileType;

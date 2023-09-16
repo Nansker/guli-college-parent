@@ -1,6 +1,6 @@
 package com.nansker.edu.controller;
 
-import com.nansker.commonutils.result.ResultData;
+import com.nansker.utils.result.ResultData;
 import com.nansker.edu.domain.EduTeacher;
 import com.nansker.edu.domain.dto.TeacherDto;
 import com.nansker.edu.service.EduTeacherService;

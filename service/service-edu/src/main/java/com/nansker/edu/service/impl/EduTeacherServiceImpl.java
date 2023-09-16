@@ -1,10 +1,9 @@
 package com.nansker.edu.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.nansker.commonutils.result.PageResultData;
+import com.nansker.utils.result.PageResultData;
 import com.nansker.edu.domain.EduTeacher;
 import com.nansker.edu.domain.dto.TeacherDto;
 import com.nansker.edu.mapper.EduTeacherMapper;

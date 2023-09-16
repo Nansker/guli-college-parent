@@ -1,6 +1,6 @@
 package com.nansker.edu.controller;
 
-import com.nansker.commonutils.result.ResultData;
+import com.nansker.utils.result.ResultData;
 import org.springframework.web.bind.annotation.*;
 
 /**

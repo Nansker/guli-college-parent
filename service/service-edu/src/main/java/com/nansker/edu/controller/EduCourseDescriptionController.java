@@ -1,6 +1,6 @@
 package com.nansker.edu.controller;
 
-import com.nansker.commonutils.result.ResultData;
+import com.nansker.utils.result.ResultData;
 import com.nansker.edu.domain.EduCourseDescription;
 import com.nansker.edu.service.EduCourseDescriptionService;
 import org.springframework.beans.factory.annotation.Autowired;

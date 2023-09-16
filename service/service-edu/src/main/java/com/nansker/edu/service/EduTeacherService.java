@@ -1,7 +1,7 @@
 package com.nansker.edu.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.nansker.commonutils.result.PageResultData;
+import com.nansker.utils.result.PageResultData;
 import com.nansker.edu.domain.EduTeacher;
 import com.nansker.edu.domain.dto.TeacherDto;
 

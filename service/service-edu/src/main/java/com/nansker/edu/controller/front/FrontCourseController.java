@@ -1,7 +1,7 @@
 package com.nansker.edu.controller.front;
 
-import com.nansker.commonutils.result.PageResultData;
-import com.nansker.commonutils.result.ResultData;
+import com.nansker.utils.result.PageResultData;
+import com.nansker.utils.result.ResultData;
 import com.nansker.edu.domain.EduCourse;
 import com.nansker.edu.domain.EduCourseDescription;
 import com.nansker.edu.domain.EduTeacher;

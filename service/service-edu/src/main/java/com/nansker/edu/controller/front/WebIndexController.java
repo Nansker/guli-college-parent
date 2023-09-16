@@ -1,14 +1,13 @@
 package com.nansker.edu.controller.front;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.nansker.commonutils.result.ResultData;
+import com.nansker.utils.result.ResultData;
 import com.nansker.edu.domain.EduCourse;
 import com.nansker.edu.domain.EduTeacher;
 import com.nansker.edu.service.EduCourseService;
 import com.nansker.edu.service.EduTeacherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

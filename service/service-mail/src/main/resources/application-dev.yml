@@ -1,0 +1,17 @@
+spring:
+  servlet:
+    multipart:
+      max-file-size: 1000MB
+      max-request-size: 1000MB
+  mail:
+    host: smtp.163.com
+    username: nansker@163.com
+    nickname: 南山客
+    password: GJSZDVCPRXTTWHOV
+    port: 25
+    protocol: smtp
+    default-encoding: UTF-8
+#  日志级别
+logging:
+  root:
+    level: info

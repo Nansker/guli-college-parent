@@ -7,6 +7,7 @@ import com.nansker.edu.domain.EduTeacher;
 import com.nansker.edu.service.EduCourseService;
 import com.nansker.edu.service.EduTeacherService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -34,6 +35,7 @@ public class WebIndexController {
 	 * @date 2023/9/15 22:08
 	 * @description 获取用户端首页课程列表、讲师列表数据
 	 */
+	@Cacheable(value ="front" ,key = "'index'")
 	@GetMapping("/index")
 	public ResultData getWebIndexData() {
 		LambdaQueryWrapper<EduCourse> courseUpdateWrapper = new LambdaQueryWrapper<>();

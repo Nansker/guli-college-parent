@@ -6,6 +6,8 @@ import com.nansker.cms.service.CrmBannerService;
 import com.nansker.commonutils.result.PageResultData;
 import com.nansker.commonutils.result.ResultData;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -24,28 +26,28 @@ public class CrmBannerAdminController {
 		PageResultData bannerList = bannerService.getBannerList(bannerDto);
 		return ResultData.ok().data(bannerList);
 	}
-
+	@Cacheable(value = "banner",key = "'byId:'+#id")
 	@GetMapping("/{id}")
 	public ResultData getBannerById(@PathVariable String id) {
 		CrmBanner banner = bannerService.getById(id);
 		return ResultData.ok().data(banner);
 	}
-
+	@CacheEvict(value = "banner", allEntries=true)
 	@PostMapping
 	public ResultData saveBanner(@RequestBody CrmBanner banner) {
 		bannerService.save(banner);
 		return ResultData.ok();
 	}
-
+	@CacheEvict(value = "banner", allEntries=true)
 	@PutMapping
 	public ResultData updateBanner(@RequestBody CrmBanner banner) {
 		bannerService.updateById(banner);
 		return ResultData.ok();
 	}
-
+	@CacheEvict(value = "banner", allEntries=true)
 	@DeleteMapping("/{id}")
 	public ResultData deleteBanner(@PathVariable String id) {
-		boolean result = bannerService.removeById(id);
+		bannerService.removeById(id);
 		return ResultData.ok();
 	}
 }

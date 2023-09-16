@@ -5,7 +5,7 @@ package com.nansker.commonutils.result;
  * @date 2023/8/8 4:54
  * @description 返回码
  */
-public interface ResultCode {
+public interface ResultCode{
     /**
      * @author Nansker
      * @date 2023/8/8 4:57

@@ -6,6 +6,7 @@ import com.nansker.edu.domain.dto.TeacherDto;
 import com.nansker.edu.service.EduTeacherService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -34,19 +35,19 @@ public class EduTeacherController {
     public ResultData getTeacherById(@PathVariable String id) {
         return ResultData.ok().data(teacherService.getById(id));
     }
-
+    @CacheEvict(value = "front", allEntries=true)
     @PostMapping
     public ResultData addTeacher(@RequestBody EduTeacher teacher){
         boolean result = teacherService.save(teacher);
         return ResultData.ok();
     }
-
+    @CacheEvict(value = "front", allEntries=true)
     @PutMapping
     public ResultData updateTeacher(@RequestBody EduTeacher teacher){
         boolean result = teacherService.updateById(teacher);
         return ResultData.ok();
     }
-
+    @CacheEvict(value = "front", allEntries=true)
     @DeleteMapping("/{id}")
     public ResultData deleteTeacher(@PathVariable String id){
         boolean result = teacherService.removeById(id);

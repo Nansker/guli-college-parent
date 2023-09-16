@@ -10,6 +10,7 @@ import com.nansker.edu.domain.vo.CoursePublishVo;
 import com.nansker.edu.service.EduCourseService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -37,27 +38,27 @@ public class EduCourseController{
     @GetMapping("/publish/{id}")
     public ResultData getCoursePublishInfoById(@PathVariable String id){
         CoursePublishVo coursePublishVo = courseService.getCoursePublishInfoById(id);
-        log.info("测试"+coursePublishVo.toString());
         return ResultData.ok().data(coursePublishVo);
     }
-
+    @CacheEvict(value = "front", allEntries=true)
     @PostMapping
     public ResultData saveCourse(@RequestBody CourseInfoVo courseInfoVo){
         String courseId = courseService.saveCourseInfo(courseInfoVo);
         return ResultData.ok().data(courseId);
     }
-
+    @CacheEvict(value = "front", allEntries=true)
     @PutMapping
     public ResultData updateCourse(@RequestBody CourseInfoVo courseInfoVo){
         courseService.updateCourseInfo(courseInfoVo);
         return ResultData.ok();
     }
-
+    @CacheEvict(value = "front", allEntries=true)
     @PutMapping("/status/{courseId}/{status}")
     public ResultData updateCourseStatus(@PathVariable String courseId,@PathVariable String status){
         courseService.updateCourseStatus(courseId,status);
         return ResultData.ok();
     }
+    @CacheEvict(value = "front", allEntries=true)
     @DeleteMapping("/{id}")
     public ResultData deleteCourse(@PathVariable String id){
         boolean result = courseService.removeById(id);

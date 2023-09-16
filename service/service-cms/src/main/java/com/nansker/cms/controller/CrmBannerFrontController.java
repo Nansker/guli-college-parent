@@ -4,6 +4,8 @@ import com.nansker.cms.domain.CrmBanner;
 import com.nansker.cms.service.CrmBannerService;
 import com.nansker.commonutils.result.ResultData;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -26,6 +28,7 @@ public class CrmBannerFrontController {
 	 * @date 2023/9/15 18:01
 	 * @description 获取所有轮播图
 	*/
+	@Cacheable(value = "banner",key = "'all'")
 	@GetMapping("/all")
 	public ResultData allBanner(){
 		List<CrmBanner> banners = bannerService.getAllBanner();

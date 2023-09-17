@@ -22,11 +22,6 @@ public class CrmBannerFrontController {
 	@Autowired
 	CrmBannerService bannerService;
 
-	/**
-	 * @author Nansker
-	 * @date 2023/9/15 18:01
-	 * @description 获取所有轮播图
-	*/
 	@Cacheable(value = "banner",key = "'all'")
 	@GetMapping("/all")
 	public ResultData allBanner(){

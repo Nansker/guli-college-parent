@@ -18,6 +18,14 @@ public class JwtUtils {
 	public static final long EXPIRE = 1000 * 60 * 60 * 24;
 	public static final String APP_SECRET = "ukc8BDbRigUDaY6pZFfWus2jZWLPHO";
 
+	/**
+	 * @author Nansker
+	 * @date 2023/9/18 0:43
+	 * @param id
+	 * @param nickname
+	 * @return java.lang.String
+	 * @description 生成token
+	*/
 	public static String getJwtToken(String id, String nickname) {
 		String JwtToken = Jwts.builder()
                 .setHeaderParam("typ", "JWT")
@@ -67,8 +75,7 @@ public class JwtUtils {
 	}
 
 	/**
-	 * 根据token获取会员id
-	 *
+	 *@description 根据token获取会员id
 	 * @param request
 	 * @return
 	 */

@@ -1,6 +1,6 @@
 package com.nansker.edu.controller;
 
-import com.nansker.utils.result.PageResultData;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.nansker.utils.result.ResultData;
 import com.nansker.edu.domain.dto.CourseDto;
 import com.nansker.edu.domain.vo.CourseInfoVo;
@@ -10,6 +10,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Map;
 
 /**
  * @author Nansker
@@ -24,8 +26,8 @@ public class EduCourseController{
     EduCourseService courseService;
     @GetMapping("/list")
     public ResultData listCourse(CourseDto courseDto) {
-        PageResultData courseList = courseService.getCourseList(courseDto);
-        return ResultData.ok().data(courseList);
+        Page result = courseService.getCourseList(courseDto);
+        return ResultData.ok().pageData(result);
     }
 
     @GetMapping("/{id}")
@@ -59,10 +61,7 @@ public class EduCourseController{
     @CacheEvict(value = "front", allEntries=true)
     @DeleteMapping("/{id}")
     public ResultData deleteCourse(@PathVariable String id){
-        boolean result = courseService.removeById(id);
-        if (!result){
-            return ResultData.error();
-        }
+        courseService.removeById(id);
         return ResultData.ok();
     }
 }

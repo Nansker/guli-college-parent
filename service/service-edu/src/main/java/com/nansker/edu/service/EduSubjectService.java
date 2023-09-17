@@ -12,5 +12,11 @@ import java.util.List;
 * @createDate: 2023-08-26 18:59:06
 */
 public interface EduSubjectService extends IService<EduSubject> {
+    /**
+     * @author Nansker
+     * @date 2023/9/18 0:48
+     * @return java.util.List<com.nansker.edu.domain.vo.SubjectNestedVo>
+     * @description 获取课程主题大纲
+    */
     List<SubjectNestedVo> nestedList();
 }

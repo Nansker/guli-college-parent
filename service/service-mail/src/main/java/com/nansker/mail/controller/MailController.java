@@ -17,7 +17,7 @@ public class MailController {
 	@Autowired
 	private MailService mailService;
 
-	@RequestMapping
+	@RequestMapping("/test")
 	public ResultData sendSimpleMail(){
 		mailService.sendSimpleMail("2771557108@qq.com","测试标题","测试文本内容");
 		return ResultData.ok();

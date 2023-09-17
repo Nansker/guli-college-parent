@@ -22,6 +22,7 @@ public class EduCourseVideoController {
 		EduCourseVideo courseVideo = courseVideoService.getById(id);
 		return ResultData.ok().data(courseVideo);
 	}
+
 	@PostMapping
 	public ResultData addCourseChapterVideo(@RequestBody EduCourseVideo courseVideo){
 		boolean result = courseVideoService.save(courseVideo);

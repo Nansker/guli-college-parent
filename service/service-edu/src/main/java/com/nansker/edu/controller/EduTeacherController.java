@@ -1,5 +1,6 @@
 package com.nansker.edu.controller;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.nansker.utils.result.ResultData;
 import com.nansker.edu.domain.EduTeacher;
 import com.nansker.edu.domain.dto.TeacherDto;
@@ -23,7 +24,8 @@ public class EduTeacherController {
 
     @GetMapping("/list")
     public ResultData listTeacher(TeacherDto teacherDto) {
-        return ResultData.ok().data(teacherService.getTeacherList(teacherDto));
+        Page result = teacherService.getTeacherList(teacherDto);
+        return ResultData.ok().pageData(result);
     }
 
     @GetMapping("/all")

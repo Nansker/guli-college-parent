@@ -12,5 +12,12 @@ import java.util.List;
 * @createDate 2023-09-06 21:52:24
 */
 public interface EduCourseChapterService extends IService<EduCourseChapter> {
+	/**
+	 * @author Nansker
+	 * @date 2023/9/18 0:49
+	 * @param courseId
+	 * @return java.util.List<com.nansker.edu.domain.vo.CourseChapterVo>
+	 * @description 根据课程id获取课程大纲信息
+	*/
 	List<CourseChapterVo> getChapterInfoByCourseId(String courseId);
 }

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nansker.edu.mapper.EduCourseMapper">
+
+    <resultMap id="BaseResultMap" type="com.nansker.edu.domain.EduCourse">
+        <id property="id" column="id" jdbcType="CHAR"/>
+        <result property="teacherId" column="teacher_id" jdbcType="CHAR"/>
+        <result property="subjectId" column="subject_id" jdbcType="CHAR"/>
+        <result property="subjectParentId" column="subject_parent_id" jdbcType="CHAR"/>
+        <result property="title" column="title" jdbcType="VARCHAR"/>
+        <result property="price" column="price" jdbcType="DECIMAL"/>
+        <result property="lessonNum" column="lesson_num" jdbcType="OTHER"/>
+        <result property="cover" column="cover" jdbcType="VARCHAR"/>
+        <result property="buyCount" column="buy_count" jdbcType="BIGINT"/>
+        <result property="viewCount" column="view_count" jdbcType="BIGINT"/>
+        <result property="version" column="version" jdbcType="BIGINT"/>
+        <result property="status" column="status" jdbcType="VARCHAR"/>
+        <result property="isDeleted" column="is_deleted" jdbcType="TINYINT"/>
+        <result property="gmtCreate" column="gmt_create" jdbcType="TIMESTAMP"/>
+        <result property="gmtModified" column="gmt_modified" jdbcType="TIMESTAMP"/>
+    </resultMap>
+    <select id="getCoursePublishVoById" resultType="com.nansker.edu.domain.vo.CoursePublishVo">
+        SELECT c.title,
+               c.cover,
+               c.lesson_num                     AS lessonNum,
+               CONVERT(c.price, DECIMAL (8, 2)) AS price,
+               s1.title                         AS subjectLevelOne,
+               s2.title                         AS subjectLevelTwo,
+               t.name                           AS teacherName,
+            d.description                           AS description
+        FROM edu_course c
+                 LEFT JOIN edu_teacher t ON c.teacher_id = t.id
+                 LEFT JOIN edu_subject s1 ON c.subject_parent_id = s1.id
+                 LEFT JOIN edu_subject s2 ON c.subject_id = s2.id
+                 LEFT JOIN edu_course_description d ON c.id = d.id
+        WHERE c.id = #{id}
+    </select>
+    <sql id="Base_Column_List">
+        id
+        ,teacher_id,subject_id,
+        subject_parent_id,title,price,
+        lesson_num,cover,buy_count,
+        view_count,version,status,
+        is_deleted,gmt_create,gmt_modified
+    </sql>
+</mapper>

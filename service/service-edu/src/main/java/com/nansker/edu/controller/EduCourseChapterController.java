@@ -19,6 +19,7 @@ import java.util.List;
 public class EduCourseChapterController {
 	@Autowired
 	EduCourseChapterService courseChapterService;
+
 	@GetMapping("/{id}")
 	public ResultData getChapterById(@PathVariable String id){
 		EduCourseChapter chapter = courseChapterService.getById(id);

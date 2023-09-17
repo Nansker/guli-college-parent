@@ -18,6 +18,7 @@ public class EduCourseDescription implements Serializable {
     /**
      * 课程ID
      */
+    @TableId(type = IdType.INPUT)
     private String id;
 
     /**

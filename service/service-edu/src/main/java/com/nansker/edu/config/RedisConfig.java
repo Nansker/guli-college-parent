@@ -1,10 +1,3 @@
-/*
- * @author 南山客
- * @email 2771557108@qq.com
- * @create 2022/10/20 20:31
- * @description Redis配置类
- */
-
 package com.nansker.edu.config;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
@@ -25,6 +18,11 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
 
 import java.time.Duration;
 
+/**
+ * @author Nansker
+ * @date 2023/9/18 0:52
+ * @description Redis配置类
+ */
 @Configuration
 public class RedisConfig extends CachingConfigurerSupport {
 
@@ -57,11 +55,7 @@ public class RedisConfig extends CachingConfigurerSupport {
 		om.enableDefaultTyping(ObjectMapper.DefaultTyping.NON_FINAL);
 		jackson2JsonRedisSerializer.setObjectMapper(om);
 		// 配置序列化（解决乱码的问题）,过期时间600秒
-		RedisCacheConfiguration config = RedisCacheConfiguration.defaultCacheConfig().entryTtl(Duration.ofSeconds(600))
-
-				.serializeKeysWith(RedisSerializationContext.SerializationPair.fromSerializer(redisSerializer))
-
-				.serializeValuesWith(RedisSerializationContext.SerializationPair.fromSerializer(jackson2JsonRedisSerializer)).disableCachingNullValues();
+		RedisCacheConfiguration config = RedisCacheConfiguration.defaultCacheConfig().entryTtl(Duration.ofSeconds(600)).serializeKeysWith(RedisSerializationContext.SerializationPair.fromSerializer(redisSerializer)).serializeValuesWith(RedisSerializationContext.SerializationPair.fromSerializer(jackson2JsonRedisSerializer)).disableCachingNullValues();
 		RedisCacheManager cacheManager = RedisCacheManager.builder(factory).cacheDefaults(config).build();
 		return cacheManager;
 	}

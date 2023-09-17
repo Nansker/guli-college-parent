@@ -25,6 +25,7 @@ public class EduSubjectController {
         List<SubjectNestedVo> nestedVos = subjectService.nestedList();
         return ResultData.ok().data(nestedVos);
     }
+
     @GetMapping("/{id}")
     public ResultData getSubjectById(@PathVariable String id) {
         return ResultData.ok().data(subjectService.getById(id));

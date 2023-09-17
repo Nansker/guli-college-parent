@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class EduCourseDescriptionController {
 	@Autowired
 	EduCourseDescriptionService courseDescriptionService;
+
 	@GetMapping("/{id}")
 	public ResultData getDescriptionById(@PathVariable String id){
 		EduCourseDescription description = courseDescriptionService.getById(id);

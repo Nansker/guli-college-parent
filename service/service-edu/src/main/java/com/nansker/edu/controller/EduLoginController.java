@@ -12,11 +12,6 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/edu/user")
 public class EduLoginController {
 
-    /**
-     * @author Nansker
-     * @date 2023/8/8 5:38
-     * @description TODO
-    */
     @PostMapping("/login")
     public ResultData login() {
         return ResultData.ok().data("登陆测试");

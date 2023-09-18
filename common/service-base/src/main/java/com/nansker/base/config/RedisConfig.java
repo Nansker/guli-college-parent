@@ -1,4 +1,4 @@
-package com.nansker.edu.config;
+package com.nansker.base.config;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.PropertyAccessor;

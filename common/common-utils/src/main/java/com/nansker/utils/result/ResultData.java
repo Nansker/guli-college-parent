@@ -10,7 +10,7 @@ import java.util.Map;
 /**
  * @author Nansker
  * @date 2023/8/8 4:57
- * @description TODO
+ * @description 统一数据响应类
  */
 @Data
 public class ResultData<T> implements Serializable {

@@ -1,4 +1,4 @@
-package com.nansker.edu.config;
+package com.nansker.base.config;
 
 import com.baomidou.mybatisplus.annotation.DbType;
 import com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor;
@@ -15,7 +15,6 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
  */
 @Configuration
 @EnableTransactionManagement
-@MapperScan("com.nansker.edu.mapper")
 public class MyBatisPlusConfig {
     /**
      * @author Nansker

@@ -19,23 +19,15 @@ public class JwtUtils {
 	public static final String APP_SECRET = "ukc8BDbRigUDaY6pZFfWus2jZWLPHO";
 
 	/**
-	 * @author Nansker
-	 * @date 2023/9/18 0:43
 	 * @param id
 	 * @param nickname
 	 * @return java.lang.String
+	 * @author Nansker
+	 * @date 2023/9/18 0:43
 	 * @description 生成token
-	*/
+	 */
 	public static String getJwtToken(String id, String nickname) {
-		String JwtToken = Jwts.builder()
-                .setHeaderParam("typ", "JWT")
-                .setHeaderParam("alg", "HS256")
-                .setSubject("user")
-                .setIssuedAt(new Date())
-                .setExpiration(new Date(System.currentTimeMillis() + EXPIRE))
-                .claim("id", id).claim("nickname", nickname)
-                .signWith(SignatureAlgorithm.HS256, APP_SECRET)
-                .compact();
+		String JwtToken = Jwts.builder().setHeaderParam("typ", "JWT").setHeaderParam("alg", "HS256").setSubject("user").setIssuedAt(new Date()).setExpiration(new Date(System.currentTimeMillis() + EXPIRE)).claim("id", id).claim("nickname", nickname).signWith(SignatureAlgorithm.HS256, APP_SECRET).compact();
 		return JwtToken;
 	}
 
@@ -75,11 +67,11 @@ public class JwtUtils {
 	}
 
 	/**
-	 *@description 根据token获取会员id
 	 * @param request
 	 * @return
+	 * @description 根据token获取会员id
 	 */
-	public static String getMemberIdByJwtToken(HttpServletRequest request) {
+	public static String getUserIdByToken(HttpServletRequest request) {
 		String jwtToken = request.getHeader("token");
 		if (StringUtils.isEmpty(jwtToken))
 			return "";

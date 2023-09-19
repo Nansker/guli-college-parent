@@ -7,6 +7,7 @@ import lombok.Data;
  * @date 2023/9/18 21:54
  * @description 自定义异常类
  */
+@Data
 public class CustomException extends RuntimeException {
 	private String msg;
 

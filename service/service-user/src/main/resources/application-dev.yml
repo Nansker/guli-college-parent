@@ -16,6 +16,21 @@ spring:
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss
     time-zone: GMT+8
+  redis:
+    host: www.nansk.cn
+    port: 6380
+    database: 0 #操作0号数据库
+    password: nanskderedis
+    ssl: false
+    timeout: 10000
+    jedis:
+      pool:
+        max-active: 8 #最大连接数
+        max-wait: 1ms #最大阻塞等待时间
+        max-idle: 8 #最大空闲连接
+        min-idle: 0 #最小空闲连接
+    cache:
+      time-to-live: 1800000 #缓存过期时间
 mybatis-plus:
   mapper-locations: classpath:mapper/*.xml
   configuration:

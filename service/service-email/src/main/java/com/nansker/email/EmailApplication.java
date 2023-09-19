@@ -1,4 +1,4 @@
-package com.nansker.mail;
+package com.nansker.email;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -10,8 +10,8 @@ import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
  * @description TODO
  */
 @SpringBootApplication(exclude = DataSourceAutoConfiguration.class)
-public class MailApplication {
+public class EmailApplication {
 	public static void main(String[] args) {
-		SpringApplication.run(MailApplication.class);
+		SpringApplication.run(EmailApplication.class);
 	}
 }

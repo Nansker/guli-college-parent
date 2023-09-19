@@ -2,6 +2,6 @@ server:
   port: 8004
 spring:
   application:
-    name: service-mail
+    name: service-email
   profiles:
     active: dev

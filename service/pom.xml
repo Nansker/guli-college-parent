@@ -16,8 +16,8 @@
         <module>service-edu</module>
         <module>service-oss</module>
         <module>service-cms</module>
-        <module>service-mail</module>
         <module>service-user</module>
+        <module>service-email</module>
     </modules>
     <dependencies>
         <dependency>

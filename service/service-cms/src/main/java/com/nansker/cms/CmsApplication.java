@@ -11,7 +11,6 @@ import org.springframework.cache.annotation.EnableCaching;
  * @description TODO
  */
 @SpringBootApplication
-//开启缓存
 @EnableCaching
 @MapperScan("com.nansker.cms.mapper")
 public class CmsApplication {

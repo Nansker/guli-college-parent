@@ -75,9 +75,9 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper, Order> implements
 	}
 
 	@Override
-	public void updateOrderStatus(String orderId, String status) {
+	public void updateOrderStatus(String orderNo, String status) {
 		LambdaUpdateWrapper<Order> updateWrapper = new LambdaUpdateWrapper<>();
-		updateWrapper.eq(Order::getId, orderId);
+		updateWrapper.eq(Order::getOrderNo, orderNo);
 		updateWrapper.set(Order::getStatus, status);
 		update(updateWrapper);
 	}

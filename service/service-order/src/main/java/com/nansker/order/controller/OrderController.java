@@ -33,16 +33,4 @@ public class OrderController {
 		return ResultData.ok().data(order);
 	}
 
-	@PostMapping("/status/{orderId}/{status}")
-	public ResultData updateOrderStatus(@PathVariable String orderId,@PathVariable String status){
-		orderService.updateOrderStatus(orderId,status);
-		return ResultData.ok();
-	}
-
-	@GetMapping("/status/{orderId}")
-	public ResultData getOrderStatusById(@PathVariable String orderId){
-		Order order = orderService.getById(orderId);
-		return ResultData.ok().data(order.getStatus());
-	}
-
 }

@@ -1,4 +1,4 @@
-package com.nansker.user.config;
+package com.nansker.base.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -26,7 +26,7 @@ public class RestTemplateConfig {
 	}
 
 	@Bean
-	public ClientHttpRequestFactory simpleClientHttpRequestFactory() {
+	public ClientHttpRequestFactory factory() {
 		SimpleClientHttpRequestFactory factory = new SimpleClientHttpRequestFactory();
 		factory.setReadTimeout(5000);//单位为ms
 		factory.setConnectTimeout(5000);//单位为ms

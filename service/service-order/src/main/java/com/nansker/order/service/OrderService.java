@@ -24,7 +24,7 @@ public interface OrderService extends IService<Order> {
 	/**
 	 * @author Nansker
 	 * @date 2023/9/22 22:02
-	 * @param orderNo
+	 * @param orderNo 订单号
 	 * @return com.nansker.entity.order.Order
 	 * @description 根据订单号查询订单信息
 	*/
@@ -33,11 +33,11 @@ public interface OrderService extends IService<Order> {
 	/**
 	 * @author Nansker
 	 * @date 2023/9/23 21:26
-	 * @param orderId
+	 * @param orderNo 订单号
 	 * @param status
 	 * @return void
 	 * @description 修改订单状态
 	*/
-	void updateOrderStatus(String orderId, String status);
+	void updateOrderStatus(String orderNo, String status);
 
 }

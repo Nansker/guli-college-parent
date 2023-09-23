@@ -5,33 +5,33 @@ import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.nansker.edu.domain.EduCourse;
-import com.nansker.edu.domain.EduCourseDescription;
-import com.nansker.edu.domain.EduTeacher;
-import com.nansker.edu.domain.dto.CourseDto;
-import com.nansker.edu.domain.vo.CourseChapterVo;
-import com.nansker.edu.domain.vo.CourseInfoVo;
-import com.nansker.edu.domain.vo.CoursePublishVo;
 import com.nansker.edu.mapper.EduCourseMapper;
 import com.nansker.edu.service.EduCourseChapterService;
 import com.nansker.edu.service.EduCourseDescriptionService;
 import com.nansker.edu.service.EduCourseService;
 import com.nansker.edu.service.EduTeacherService;
-import com.nansker.utils.result.ResultData;
+import com.nansker.entity.dto.CourseDto;
+import com.nansker.entity.edu.EduCourse;
+import com.nansker.entity.edu.EduCourseDescription;
+import com.nansker.entity.edu.EduTeacher;
+import com.nansker.entity.vo.CourseChapterVo;
+import com.nansker.entity.vo.CourseDetailsVo;
+import com.nansker.entity.vo.CourseInfoVo;
+import com.nansker.entity.vo.CoursePublishVo;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * @author Nansker
  * @description 针对表【edu_course(课程)】的数据库操作Service实现
  * @createDate 2023-09-17 02:07:10
  */
+@Slf4j
 @Service
 public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse> implements EduCourseService {
 	@Autowired
@@ -60,21 +60,27 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
 	}
 
 	@Override
-	public Map getCourseAndChapterById(String id) {
+	public CourseDetailsVo getCourseDetailsById(String id) {
 		//课程基本信息
 		EduCourse course = getById(id);
-		List<CourseChapterVo> chapterList = courseChapterService.getChapterInfoByCourseId(id);
+		//课程讲师信息
+		EduTeacher teacher = teacherService.getById(course.getTeacherId());
 		//课程描述信息
 		EduCourseDescription courseDescription = courseDescriptionService.getById(id);
-		//课程讲师信息
-		EduTeacher teacher = teacherService.getById(course.getTeacherId());        //课程章节信息
-		//组装返回对象
-		Map<String, Object> result = new HashMap<>();
-		result.put("course", course);
-		result.put("teacher", teacher);
-		result.put("courseDescription", courseDescription);
-		result.put("chapterList", chapterList);
-		return result;
+		//课程章节信息
+		List<CourseChapterVo> chapterList = courseChapterService.getChapterInfoByCourseId(id);
+
+		CourseDetailsVo detailsVo = new CourseDetailsVo();
+		detailsVo.setDescription(courseDescription.getDescription());
+		detailsVo.setChapter(chapterList);
+		BeanUtils.copyProperties(course,detailsVo);
+
+		detailsVo.setTeacherId(teacher.getId());
+		detailsVo.setTeacherName(teacher.getName());
+		detailsVo.setTeacherAvatar(teacher.getAvatar());
+		detailsVo.setTeacherCareer(teacher.getCareer());
+
+		return detailsVo;
 	}
 
 	@Transactional

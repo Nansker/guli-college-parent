@@ -1,6 +1,6 @@
 package com.nansker.edu.service;
 
-import com.nansker.edu.domain.EduCourseDescription;
+import com.nansker.entity.edu.EduCourseDescription;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**

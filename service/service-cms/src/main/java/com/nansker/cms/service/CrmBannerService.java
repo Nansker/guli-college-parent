@@ -2,11 +2,10 @@ package com.nansker.cms.service;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.nansker.cms.domain.CrmBanner;
+import com.nansker.entity.cms.CrmBanner;
 import com.nansker.cms.domain.dto.BannerDto;
 
 import java.util.List;
-import java.util.Map;
 
 /**
  * @author Nansker
@@ -15,7 +14,7 @@ import java.util.Map;
  */
 public interface CrmBannerService extends IService<CrmBanner> {
 	/**
-	 * @return java.util.List<com.nansker.cms.domain.CrmBanner>
+	 * @return java.util.List<com.nansker.entity.cms.CrmBanner>
 	 * @author Nansker
 	 * @date 2023/9/17 23:25
 	 * @description 获取所有轮播图

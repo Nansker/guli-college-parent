@@ -1,8 +1,8 @@
 package com.nansker.edu.service;
 
-import com.nansker.edu.domain.EduSubject;
+import com.nansker.entity.edu.EduSubject;
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.nansker.edu.domain.vo.SubjectNestedVo;
+import com.nansker.entity.vo.SubjectNestedVo;
 
 import java.util.List;
 
@@ -15,7 +15,7 @@ public interface EduSubjectService extends IService<EduSubject> {
     /**
      * @author Nansker
      * @date 2023/9/18 0:48
-     * @return java.util.List<com.nansker.edu.domain.vo.SubjectNestedVo>
+     * @return java.util.List<com.nansker.entity.vo.SubjectNestedVo>
      * @description 获取课程主题大纲
     */
     List<SubjectNestedVo> nestedList();

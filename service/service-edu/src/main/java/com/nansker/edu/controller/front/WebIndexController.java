@@ -2,8 +2,8 @@ package com.nansker.edu.controller.front;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.nansker.utils.result.ResultData;
-import com.nansker.edu.domain.EduCourse;
-import com.nansker.edu.domain.EduTeacher;
+import com.nansker.entity.edu.EduCourse;
+import com.nansker.entity.edu.EduTeacher;
 import com.nansker.edu.service.EduCourseService;
 import com.nansker.edu.service.EduTeacherService;
 import org.springframework.beans.factory.annotation.Autowired;

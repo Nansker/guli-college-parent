@@ -1,7 +1,7 @@
 package com.nansker.edu.controller;
 
 import com.nansker.utils.result.ResultData;
-import com.nansker.edu.domain.EduCourseVideo;
+import com.nansker.entity.edu.EduCourseVideo;
 import com.nansker.edu.service.EduCourseVideoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

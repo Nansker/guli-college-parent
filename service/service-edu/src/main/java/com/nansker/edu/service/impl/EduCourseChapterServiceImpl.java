@@ -2,9 +2,9 @@ package com.nansker.edu.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.nansker.edu.domain.EduCourseChapter;
-import com.nansker.edu.domain.EduCourseVideo;
-import com.nansker.edu.domain.vo.CourseChapterVo;
+import com.nansker.entity.edu.EduCourseChapter;
+import com.nansker.entity.edu.EduCourseVideo;
+import com.nansker.entity.vo.CourseChapterVo;
 import com.nansker.edu.mapper.EduCourseChapterMapper;
 import com.nansker.edu.service.EduCourseChapterService;
 import com.nansker.edu.service.EduCourseVideoService;

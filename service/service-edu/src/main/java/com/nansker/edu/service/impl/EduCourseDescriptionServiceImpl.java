@@ -1,7 +1,7 @@
 package com.nansker.edu.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.nansker.edu.domain.EduCourseDescription;
+import com.nansker.entity.edu.EduCourseDescription;
 import com.nansker.edu.service.EduCourseDescriptionService;
 import com.nansker.edu.mapper.EduCourseDescriptionMapper;
 import org.springframework.stereotype.Service;

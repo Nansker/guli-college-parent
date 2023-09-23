@@ -1,8 +1,8 @@
 package com.nansker.edu.controller;
 
 import com.nansker.utils.result.ResultData;
-import com.nansker.edu.domain.EduSubject;
-import com.nansker.edu.domain.vo.SubjectNestedVo;
+import com.nansker.entity.edu.EduSubject;
+import com.nansker.entity.vo.SubjectNestedVo;
 import com.nansker.edu.service.EduSubjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

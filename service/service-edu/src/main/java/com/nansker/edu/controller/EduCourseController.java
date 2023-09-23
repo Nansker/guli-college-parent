@@ -2,16 +2,14 @@ package com.nansker.edu.controller;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.nansker.utils.result.ResultData;
-import com.nansker.edu.domain.dto.CourseDto;
-import com.nansker.edu.domain.vo.CourseInfoVo;
-import com.nansker.edu.domain.vo.CoursePublishVo;
+import com.nansker.entity.dto.CourseDto;
+import com.nansker.entity.vo.CourseInfoVo;
+import com.nansker.entity.vo.CoursePublishVo;
 import com.nansker.edu.service.EduCourseService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.Map;
 
 /**
  * @author Nansker

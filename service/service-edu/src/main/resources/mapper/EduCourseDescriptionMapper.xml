@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.nansker.edu.mapper.EduCourseDescriptionMapper">
 
-    <resultMap id="BaseResultMap" type="com.nansker.edu.domain.EduCourseDescription">
+    <resultMap id="BaseResultMap" type="com.nansker.entity.edu.EduCourseDescription">
             <id property="id" column="id" jdbcType="CHAR"/>
             <result property="description" column="description" jdbcType="VARCHAR"/>
             <result property="gmtCreate" column="gmt_create" jdbcType="TIMESTAMP"/>

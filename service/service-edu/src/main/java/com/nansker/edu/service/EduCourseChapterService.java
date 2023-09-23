@@ -1,8 +1,8 @@
 package com.nansker.edu.service;
 
-import com.nansker.edu.domain.EduCourseChapter;
+import com.nansker.entity.edu.EduCourseChapter;
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.nansker.edu.domain.vo.CourseChapterVo;
+import com.nansker.entity.vo.CourseChapterVo;
 
 import java.util.List;
 
@@ -16,7 +16,7 @@ public interface EduCourseChapterService extends IService<EduCourseChapter> {
 	 * @author Nansker
 	 * @date 2023/9/18 0:49
 	 * @param courseId
-	 * @return java.util.List<com.nansker.edu.domain.vo.CourseChapterVo>
+	 * @return java.util.List<com.nansker.entity.vo.CourseChapterVo>
 	 * @description 根据课程id获取课程大纲信息
 	*/
 	List<CourseChapterVo> getChapterInfoByCourseId(String courseId);

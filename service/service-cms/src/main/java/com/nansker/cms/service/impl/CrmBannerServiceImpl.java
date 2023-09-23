@@ -4,7 +4,7 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.nansker.cms.domain.CrmBanner;
+import com.nansker.entity.cms.CrmBanner;
 import com.nansker.cms.domain.dto.BannerDto;
 import com.nansker.cms.service.CrmBannerService;
 import com.nansker.cms.mapper.CrmBannerMapper;

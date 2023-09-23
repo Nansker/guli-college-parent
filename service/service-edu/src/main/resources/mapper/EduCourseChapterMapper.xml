@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.nansker.edu.mapper.EduCourseChapterMapper">
 
-    <resultMap id="BaseResultMap" type="com.nansker.edu.domain.EduCourseChapter">
+    <resultMap id="BaseResultMap" type="com.nansker.entity.edu.EduCourseChapter">
             <id property="id" column="id" jdbcType="CHAR"/>
             <result property="courseId" column="course_id" jdbcType="CHAR"/>
             <result property="title" column="title" jdbcType="VARCHAR"/>

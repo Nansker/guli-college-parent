@@ -1,25 +1,18 @@
 package com.nansker.edu.controller.front;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.nansker.utils.result.ResultData;
-import com.nansker.edu.domain.EduCourse;
-import com.nansker.edu.domain.EduCourseDescription;
-import com.nansker.edu.domain.EduTeacher;
-import com.nansker.edu.domain.dto.CourseDto;
-import com.nansker.edu.domain.vo.CourseChapterVo;
 import com.nansker.edu.service.EduCourseChapterService;
 import com.nansker.edu.service.EduCourseDescriptionService;
 import com.nansker.edu.service.EduCourseService;
 import com.nansker.edu.service.EduTeacherService;
+import com.nansker.entity.dto.CourseDto;
+import com.nansker.entity.vo.CourseDetailsVo;
+import com.nansker.utils.result.ResultData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 /**
  * @author Nansker
@@ -44,9 +37,16 @@ public class FrontCourseController {
 		return ResultData.ok().pageData(result);
 	}
 
-	@GetMapping("/chapter/{id}")
-	public ResultData getCourseAndChapterById(@PathVariable String id) {
-		Map result = courseService.getCourseAndChapterById(id);
-		return ResultData.ok().data(result);
+	@GetMapping("/details/{id}")
+	public ResultData getCourseDetailsById(@PathVariable String id) {
+		CourseDetailsVo detailsVo = courseService.getCourseDetailsById(id);
+		return ResultData.ok().data(detailsVo);
 	}
+
+	@GetMapping("/details/vo/{id}")
+	public CourseDetailsVo getCourseDetails(@PathVariable String id) {
+		CourseDetailsVo detailsVo = courseService.getCourseDetailsById(id);
+		return detailsVo;
+	}
+
 }

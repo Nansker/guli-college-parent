@@ -2,8 +2,8 @@ package com.nansker.edu.service;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.nansker.edu.domain.EduTeacher;
-import com.nansker.edu.domain.dto.TeacherDto;
+import com.nansker.entity.edu.EduTeacher;
+import com.nansker.entity.dto.TeacherDto;
 
 /**
 * @author Nansker

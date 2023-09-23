@@ -1,6 +1,6 @@
 package com.nansker.oss.qiniu.service;
 
-import com.nansker.oss.qiniu.domain.CustomPutRet;
+import com.nansker.entity.oss.qiniu.CustomPutRet;
 import org.springframework.web.multipart.MultipartFile;
 
 /**

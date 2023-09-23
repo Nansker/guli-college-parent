@@ -2,8 +2,8 @@ package com.nansker.oss.qiniu.controller;
 
 import com.nansker.utils.result.ResultData;
 import com.nansker.oss.config.QiniuYunConfig;
-import com.nansker.oss.qiniu.domain.CustomPutRet;
-import com.nansker.oss.qiniu.domain.FileType;
+import com.nansker.entity.oss.qiniu.CustomPutRet;
+import com.nansker.entity.oss.qiniu.FileType;
 import com.nansker.oss.qiniu.service.QiniuYunService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

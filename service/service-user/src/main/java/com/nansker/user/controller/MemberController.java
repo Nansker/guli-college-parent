@@ -1,8 +1,8 @@
 package com.nansker.user.controller;
 
-import com.nansker.user.domain.SysMember;
-import com.nansker.user.domain.vo.LoginVo;
-import com.nansker.user.domain.vo.RegisterVo;
+import com.nansker.entity.user.SysMember;
+import com.nansker.entity.vo.LoginVo;
+import com.nansker.entity.vo.RegisterVo;
 import com.nansker.user.service.SysMemberService;
 import com.nansker.utils.result.ResultData;
 import com.nansker.utils.security.JwtUtils;
@@ -38,10 +38,16 @@ public class MemberController {
 	}
 
 	@GetMapping("/info")
-	public ResultData getUserInfoByToken(HttpServletRequest request){
+	public ResultData getUserInfoByToken(HttpServletRequest request) {
 		String id = JwtUtils.getUserIdByToken(request);
 		SysMember user = memberService.getById(id);
 		return ResultData.ok().data(user);
+	}
+
+	@GetMapping("/{id}")
+	public SysMember getUserInfoById(@PathVariable String id) {
+		SysMember member = memberService.getById(id);
+		return member;
 	}
 
 }

@@ -1,9 +1,9 @@
 package com.nansker.user.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.nansker.user.domain.SysMember;
-import com.nansker.user.domain.vo.LoginVo;
-import com.nansker.user.domain.vo.RegisterVo;
+import com.nansker.entity.user.SysMember;
+import com.nansker.entity.vo.LoginVo;
+import com.nansker.entity.vo.RegisterVo;
 
 /**
  * @author Nansker

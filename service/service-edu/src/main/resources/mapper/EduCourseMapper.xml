@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.nansker.edu.mapper.EduCourseMapper">
 
-    <resultMap id="BaseResultMap" type="com.nansker.edu.domain.EduCourse">
+    <resultMap id="BaseResultMap" type="com.nansker.entity.edu.EduCourse">
         <id property="id" column="id" jdbcType="CHAR"/>
         <result property="teacherId" column="teacher_id" jdbcType="CHAR"/>
         <result property="subjectId" column="subject_id" jdbcType="CHAR"/>
@@ -21,7 +21,7 @@
         <result property="gmtCreate" column="gmt_create" jdbcType="TIMESTAMP"/>
         <result property="gmtModified" column="gmt_modified" jdbcType="TIMESTAMP"/>
     </resultMap>
-    <select id="getCoursePublishVoById" resultType="com.nansker.edu.domain.vo.CoursePublishVo">
+    <select id="getCoursePublishVoById" resultType="com.nansker.entity.vo.CoursePublishVo">
         SELECT c.title,
                c.cover,
                c.lesson_num                     AS lessonNum,

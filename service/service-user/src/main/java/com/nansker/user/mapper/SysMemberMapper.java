@@ -1,7 +1,7 @@
 package com.nansker.user.mapper;
 
-import com.nansker.user.domain.SysMember;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.nansker.entity.user.SysMember;
 
 /**
 * @author Nansker

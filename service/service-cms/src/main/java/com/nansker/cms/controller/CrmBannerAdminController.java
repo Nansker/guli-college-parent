@@ -1,7 +1,7 @@
 package com.nansker.cms.controller;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.nansker.cms.domain.CrmBanner;
+import com.nansker.entity.cms.CrmBanner;
 import com.nansker.cms.domain.dto.BannerDto;
 import com.nansker.cms.service.CrmBannerService;
 import com.nansker.utils.result.ResultData;

@@ -1,6 +1,6 @@
 package com.nansker.cms.domain.dto;
 
-import com.nansker.cms.domain.CrmBanner;
+import com.nansker.entity.cms.CrmBanner;
 import lombok.Data;
 
 import java.io.Serializable;

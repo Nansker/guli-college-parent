@@ -2,8 +2,8 @@ package com.nansker.edu.controller;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.nansker.utils.result.ResultData;
-import com.nansker.edu.domain.EduTeacher;
-import com.nansker.edu.domain.dto.TeacherDto;
+import com.nansker.entity.edu.EduTeacher;
+import com.nansker.entity.dto.TeacherDto;
 import com.nansker.edu.service.EduTeacherService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

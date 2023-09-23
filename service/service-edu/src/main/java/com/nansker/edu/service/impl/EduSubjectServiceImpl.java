@@ -2,9 +2,9 @@ package com.nansker.edu.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.nansker.edu.domain.EduSubject;
-import com.nansker.edu.domain.vo.SubjectNestedVo;
-import com.nansker.edu.domain.vo.SubjectVo;
+import com.nansker.entity.edu.EduSubject;
+import com.nansker.entity.vo.SubjectNestedVo;
+import com.nansker.entity.vo.SubjectVo;
 import com.nansker.edu.mapper.EduSubjectMapper;
 import com.nansker.edu.service.EduSubjectService;
 import org.springframework.beans.BeanUtils;

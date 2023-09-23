@@ -2,14 +2,12 @@ package com.nansker.edu.service;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.nansker.edu.domain.EduCourse;
-import com.nansker.edu.domain.dto.CourseDto;
-import com.nansker.edu.domain.vo.CourseInfoVo;
-import com.nansker.edu.domain.vo.CoursePublishVo;
-import com.nansker.utils.result.ResultData;
+import com.nansker.entity.dto.CourseDto;
+import com.nansker.entity.edu.EduCourse;
+import com.nansker.entity.vo.CourseDetailsVo;
+import com.nansker.entity.vo.CourseInfoVo;
+import com.nansker.entity.vo.CoursePublishVo;
 import org.springframework.web.bind.annotation.PathVariable;
-
-import java.util.Map;
 
 /**
  * @author Nansker
@@ -30,7 +28,7 @@ public interface EduCourseService extends IService<EduCourse> {
 	 * @author Nansker
 	 * @date 2023/9/17 22:50
 	 * @param id
-	 * @return com.nansker.edu.domain.vo.CoursePublishVo
+	 * @return com.nansker.entity.vo.CoursePublishVo
 	 * @description 获取课程发布信息
 	 */
 	CoursePublishVo getCoursePublishInfoById(String id);
@@ -42,7 +40,7 @@ public interface EduCourseService extends IService<EduCourse> {
 	 * @date 2023/9/16 12:02
 	 * @description 根据id获取课程详情及章节信息
 	 */
-	Map getCourseAndChapterById(@PathVariable String id);
+	CourseDetailsVo getCourseDetailsById(@PathVariable String id);
 
 	/**
 	 * @param courseInfoVo

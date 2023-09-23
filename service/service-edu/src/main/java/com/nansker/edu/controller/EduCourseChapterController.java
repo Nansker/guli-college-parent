@@ -1,8 +1,8 @@
 package com.nansker.edu.controller;
 
 import com.nansker.utils.result.ResultData;
-import com.nansker.edu.domain.EduCourseChapter;
-import com.nansker.edu.domain.vo.CourseChapterVo;
+import com.nansker.entity.edu.EduCourseChapter;
+import com.nansker.entity.vo.CourseChapterVo;
 import com.nansker.edu.service.EduCourseChapterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

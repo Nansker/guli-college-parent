@@ -2,7 +2,7 @@ package com.nansker.oss.qiniu.service.impl;
 
 import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import com.nansker.oss.config.QiniuYunConfig;
-import com.nansker.oss.qiniu.domain.CustomPutRet;
+import com.nansker.entity.oss.qiniu.CustomPutRet;
 import com.nansker.oss.qiniu.service.QiniuYunService;
 import com.qiniu.common.Region;
 import com.qiniu.http.Response;

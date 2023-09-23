@@ -14,9 +14,11 @@
     <modules>
         <module>common-utils</module>
         <module>service-base</module>
+        <module>service-entity</module>
     </modules>
 
     <dependencies>
+
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>

@@ -1,7 +1,7 @@
 package com.nansker.edu.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.nansker.edu.domain.EduTeacher;
+import com.nansker.entity.edu.EduTeacher;
 
 /**
 * @author Nansker

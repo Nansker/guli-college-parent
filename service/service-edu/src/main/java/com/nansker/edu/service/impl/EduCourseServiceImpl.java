@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.nansker.edu.client.OrderClient;
 import com.nansker.edu.mapper.EduCourseMapper;
 import com.nansker.edu.service.EduCourseChapterService;
 import com.nansker.edu.service.EduCourseDescriptionService;
@@ -18,12 +19,14 @@ import com.nansker.entity.vo.CourseChapterVo;
 import com.nansker.entity.vo.CourseDetailsVo;
 import com.nansker.entity.vo.CourseInfoVo;
 import com.nansker.entity.vo.CoursePublishVo;
+import com.nansker.utils.security.JwtUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
@@ -40,6 +43,8 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
 	EduCourseDescriptionService courseDescriptionService;
 	@Autowired
 	EduCourseChapterService courseChapterService;
+	@Autowired
+	OrderClient orderClient;
 
 	@Override
 	public Page getCourseList(CourseDto courseDto) {
@@ -49,18 +54,16 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
 		queryWrapper.eq(StringUtils.isNotEmpty(courseDto.getStatus()), EduCourse::getStatus, courseDto.getStatus());
 		queryWrapper.orderByDesc(EduCourse::getGmtCreate);
 		Page<EduCourse> page = new Page<>(courseDto.getPageNum(), courseDto.getPageSize());
-		Page<EduCourse> result = page(page, queryWrapper);
-		return result;
+		return page(page, queryWrapper);
 	}
 
 	@Override
 	public CoursePublishVo getCoursePublishInfoById(String id) {
-		CoursePublishVo publishVo = baseMapper.getCoursePublishVoById(id);
-		return publishVo;
+		return baseMapper.getCoursePublishVoById(id);
 	}
 
 	@Override
-	public CourseDetailsVo getCourseDetailsById(String id) {
+	public CourseDetailsVo getCourseDetailsById(HttpServletRequest request, String id) {
 		//课程基本信息
 		EduCourse course = getById(id);
 		//课程讲师信息
@@ -69,17 +72,20 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
 		EduCourseDescription courseDescription = courseDescriptionService.getById(id);
 		//课程章节信息
 		List<CourseChapterVo> chapterList = courseChapterService.getChapterInfoByCourseId(id);
+		String userId = JwtUtils.getUserIdByToken(request);
+		//获取用户课程购买状态
+		Boolean buyStatus = orderClient.getBuyStatusByCourseId(userId, id);
 
 		CourseDetailsVo detailsVo = new CourseDetailsVo();
 		detailsVo.setDescription(courseDescription.getDescription());
 		detailsVo.setChapter(chapterList);
-		BeanUtils.copyProperties(course,detailsVo);
+		BeanUtils.copyProperties(course, detailsVo);
 
 		detailsVo.setTeacherId(teacher.getId());
 		detailsVo.setTeacherName(teacher.getName());
 		detailsVo.setTeacherAvatar(teacher.getAvatar());
 		detailsVo.setTeacherCareer(teacher.getCareer());
-
+		detailsVo.setBuyStatus(buyStatus);
 		return detailsVo;
 	}
 

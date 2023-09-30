@@ -19,10 +19,6 @@ spring:
       maximum-pool-size: 12
       minimum-idle: 10
       pool-name: GuliHikariPool
-  cloud:
-    nacos:
-      discovery:
-        server-addr: 127.0.0.1:8848
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss
     time-zone: GMT+8
@@ -39,9 +35,18 @@ spring:
         max-wait: 1ms #最大阻塞等待时间
         max-idle: 8 #最大空闲连接
         min-idle: 0 #最小空闲连接
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
   cache:
     redis:
       time-to-live: 1800000
+feign:
+  hystrix:
+    enabled: true
+hystrix:
+  command.default.execution.isolation.thread.timeoutInMilliseconds: 5000
 mybatis-plus:
   mapper-locations: classpath:mapper/*.xml
   configuration:

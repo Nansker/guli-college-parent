@@ -46,6 +46,10 @@ public class CourseDetailsVo implements Serializable {
 	 */
 	private BigDecimal price;
 	/**
+	 * 用户购买状态
+	 */
+	private Boolean buyStatus;
+	/**
 	 * 总课时
 	 */
 	private Object lessonNum;

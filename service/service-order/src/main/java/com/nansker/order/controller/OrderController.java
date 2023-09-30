@@ -14,8 +14,8 @@ import javax.servlet.http.HttpServletRequest;
  * @date 2023/9/22 17:00
  * @description TODO
  */
-@RestController
 @Slf4j
+@RestController
 @RequestMapping("/order")
 public class OrderController {
 	@Autowired
@@ -31,6 +31,12 @@ public class OrderController {
 	public ResultData getOrderByNo(@PathVariable String orderNo) {
 		Order order = orderService.getOrderByNo(orderNo);
 		return ResultData.ok().data(order);
+	}
+
+	@GetMapping("/isBuyCourse/{userId}/{courseId}")
+	public Boolean getBuyStatusByCourseId(@PathVariable("userId") String userId, @PathVariable("courseId") String courseId) {
+		Boolean result = orderService.getBuyStatusByCourseId(userId, courseId);
+		return result;
 	}
 
 }

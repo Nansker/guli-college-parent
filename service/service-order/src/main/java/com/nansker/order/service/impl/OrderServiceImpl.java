@@ -13,7 +13,6 @@ import com.nansker.order.mapper.OrderMapper;
 import com.nansker.order.service.OrderService;
 import com.nansker.order.utils.OrderNoUtil;
 import com.nansker.utils.security.JwtUtils;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
@@ -25,7 +24,6 @@ import javax.servlet.http.HttpServletRequest;
  * @description 针对表【order(订单)】的数据库操作Service实现
  * @createDate 2023-09-22 16:11:23
  */
-@Slf4j
 @Service
 public class OrderServiceImpl extends ServiceImpl<OrderMapper, Order> implements OrderService {
 	@Autowired
@@ -70,8 +68,7 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper, Order> implements
 
 	@Override
 	public Order getOrderByNo(String orderNo) {
-		Order order = getOne(new LambdaQueryWrapper<Order>().eq(Order::getOrderNo, orderNo));
-		return order;
+		return getOne(new LambdaQueryWrapper<Order>().eq(Order::getOrderNo, orderNo));
 	}
 
 	@Override
@@ -82,4 +79,13 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper, Order> implements
 		update(updateWrapper);
 	}
 
+	@Override
+	public Boolean getBuyStatusByCourseId(String userId, String courseId) {
+		LambdaQueryWrapper<Order> queryWrapper = new LambdaQueryWrapper<>();
+		queryWrapper.eq(Order::getMemberId, userId);
+		queryWrapper.eq(Order::getCourseId, courseId);
+		queryWrapper.eq(Order::getStatus, 1);
+		long count = count(queryWrapper);
+		return count == 0 ? Boolean.FALSE : Boolean.TRUE;
+	}
 }

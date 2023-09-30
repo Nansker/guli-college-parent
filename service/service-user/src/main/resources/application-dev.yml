@@ -44,6 +44,10 @@ spring:
     nacos:
       discovery:
         server-addr: 127.0.0.1:8848
+#开启熔断机制
+#feign:
+#  hystrix:
+#    enabled: true
 mybatis-plus:
   mapper-locations: classpath:mapper/*.xml
   configuration:

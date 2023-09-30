@@ -9,10 +9,9 @@ import com.nansker.entity.dto.CourseDto;
 import com.nansker.entity.vo.CourseDetailsVo;
 import com.nansker.utils.result.ResultData;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * @author Nansker
@@ -38,14 +37,14 @@ public class FrontCourseController {
 	}
 
 	@GetMapping("/details/{id}")
-	public ResultData getCourseDetailsById(@PathVariable String id) {
-		CourseDetailsVo detailsVo = courseService.getCourseDetailsById(id);
+	public ResultData getCourseDetailsById(HttpServletRequest request, @PathVariable String id) {
+		CourseDetailsVo detailsVo = courseService.getCourseDetailsById(request, id);
 		return ResultData.ok().data(detailsVo);
 	}
 
 	@GetMapping("/details/vo/{id}")
-	public CourseDetailsVo getCourseDetails(@PathVariable String id) {
-		CourseDetailsVo detailsVo = courseService.getCourseDetailsById(id);
+	public CourseDetailsVo getCourseDetails(HttpServletRequest request, @PathVariable("id") String id) {
+		CourseDetailsVo detailsVo = courseService.getCourseDetailsById(request, id);
 		return detailsVo;
 	}
 

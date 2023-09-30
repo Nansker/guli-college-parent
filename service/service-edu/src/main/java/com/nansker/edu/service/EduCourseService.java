@@ -9,6 +9,8 @@ import com.nansker.entity.vo.CourseInfoVo;
 import com.nansker.entity.vo.CoursePublishVo;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import javax.servlet.http.HttpServletRequest;
+
 /**
  * @author Nansker
  * @description 针对表【edu_course(课程)】的数据库操作Service
@@ -16,7 +18,7 @@ import org.springframework.web.bind.annotation.PathVariable;
  */
 public interface EduCourseService extends IService<EduCourse> {
 	/**
-	 * @param courseDto
+	 * @param courseDto 课程信息参数实体
 	 * @return com.nansker.utils.result.PageResultData
 	 * @author Nansker
 	 * @date 2023/9/17 22:37
@@ -27,23 +29,23 @@ public interface EduCourseService extends IService<EduCourse> {
 	/**
 	 * @author Nansker
 	 * @date 2023/9/17 22:50
-	 * @param id
+	 * @param id 课程id
 	 * @return com.nansker.entity.vo.CoursePublishVo
 	 * @description 获取课程发布信息
 	 */
 	CoursePublishVo getCoursePublishInfoById(String id);
 
 	/**
-	 * @param id
+	 * @param id 课程id
 	 * @return com.nansker.commonutils.result.ResultData
 	 * @author Nansker
 	 * @date 2023/9/16 12:02
 	 * @description 根据id获取课程详情及章节信息
 	 */
-	CourseDetailsVo getCourseDetailsById(@PathVariable String id);
+	CourseDetailsVo getCourseDetailsById(HttpServletRequest request, @PathVariable String id);
 
 	/**
-	 * @param courseInfoVo
+	 * @param courseInfoVo 课程信息实体
 	 * @return java.lang.String
 	 * @author Nansker
 	 * @date 2023/9/17 22:52
@@ -61,8 +63,8 @@ public interface EduCourseService extends IService<EduCourse> {
 	void updateCourseInfo(CourseInfoVo courseInfoVo);
 
 	/**
-	 * @param courseId
-	 * @param status
+	 * @param courseId 课程id
+	 * @param status 课程状态
 	 * @return void
 	 * @author Nansker
 	 * @date 2023/9/17 22:48

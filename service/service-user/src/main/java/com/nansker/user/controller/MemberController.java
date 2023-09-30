@@ -45,7 +45,7 @@ public class MemberController {
 	}
 
 	@GetMapping("/{id}")
-	public SysMember getUserInfoById(@PathVariable String id) {
+	public SysMember getUserInfoById(@PathVariable("id") String id) {
 		SysMember member = memberService.getById(id);
 		return member;
 	}

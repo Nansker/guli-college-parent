@@ -10,7 +10,7 @@ import com.nansker.entity.user.SysMember;
 * @Entity com.nansker.user.domain.SysMember
 */
 public interface SysMemberMapper extends BaseMapper<SysMember> {
-
+	Integer selectRegisterCount(String day);
 }
 
 

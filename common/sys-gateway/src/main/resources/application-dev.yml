@@ -1,0 +1,38 @@
+spring:
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: service-user
+          uri: http://127.0.0.1:8160
+          predicates:
+            - Path=/user/**
+        - id: service-edu
+          uri: http://127.0.0.1:8001
+          predicates:
+            - Path=/edu/**
+        - id: service-order
+          uri: http://127.0.0.1:8006
+          predicates:
+            - Path=/order/**
+        - id: service-cms
+          uri: http://127.0.0.1:8003
+          predicates:
+            - Path=/cms/**
+        - id: service-email
+          uri: http://127.0.0.1:8004
+          predicates:
+            - Path=/email/**
+        - id: service-oss
+          uri: http://127.0.0.1:8005
+          predicates:
+            - Path=/oss/**
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+#  日志级别
+logging:
+  root:
+    level: info

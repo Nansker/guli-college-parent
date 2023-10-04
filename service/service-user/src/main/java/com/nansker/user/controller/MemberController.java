@@ -50,4 +50,10 @@ public class MemberController {
 		return member;
 	}
 
+	@GetMapping("/register/count/{day}")
+	public ResultData registerCount(@PathVariable String day){
+		Integer count = memberService.countRegisterByDay(day);
+		return ResultData.ok().data(count);
+	}
+
 }

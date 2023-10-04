@@ -17,7 +17,7 @@ import java.util.Date;
 @Data
 public class Order implements Serializable {
 	/**
-	 *
+	 * 主键
 	 */
 	@TableId(value = "`id`", type = IdType.ASSIGN_ID)
 	private String id;
@@ -97,14 +97,12 @@ public class Order implements Serializable {
 	/**
 	 * 创建时间
 	 */
-
 	@TableField(value = "`gmt_create`", fill = FieldFill.INSERT)
 	private Date gmtCreate;
 
 	/**
 	 * 更新时间
 	 */
-
 	@TableField(value = "`gmt_modified`", fill = FieldFill.INSERT_UPDATE)
 	private Date gmtModified;
 

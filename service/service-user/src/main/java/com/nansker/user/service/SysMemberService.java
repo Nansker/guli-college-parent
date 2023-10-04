@@ -29,4 +29,12 @@ public interface SysMemberService extends IService<SysMember> {
 	 */
 	void register(RegisterVo register);
 
+	/**
+	 * @author Nansker
+	 * @date 2023/10/3 14:46
+	 * @param day 注册日期
+	 * @return java.lang.Integer
+	 * @description 根据日期获取用户注册数量
+	*/
+	Integer countRegisterByDay(String day);
 }

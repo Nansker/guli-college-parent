@@ -84,4 +84,9 @@ public class SysMemberServiceImpl extends ServiceImpl<SysMemberMapper, SysMember
 		save(member);
 	}
 
+	@Override
+	public Integer countRegisterByDay(String day) {
+		return baseMapper.selectRegisterCount(day);
+	}
+
 }
